@@ -52,7 +52,8 @@ class PremiumSupport(commands.Cog):
             recipient_id = thread.recipient
         else:
             recipient_id = thread.recipient.id
-        recipient = await self.bot.modmail_guild.fetch_member(recipient_id)
+        main_guild = self.bot.get_guild(GUILD_ID)
+        recipient = await main_guild.fetch_member(recipient_id)
         premium = False
         for role in recipient.roles:
             if role.id in self.roles:
